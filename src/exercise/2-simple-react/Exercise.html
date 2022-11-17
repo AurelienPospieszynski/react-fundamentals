@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {{> head}}
+
+    <!-- ℹ️ Les scripts React pour qu'on puisse utiliser React.createElement -->
+    <script
+      crossorigin
+      src="https://unpkg.com/react@18/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+    ></script>
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+
+  <script>
+    const startButton = React.createElement("button", { id: "start" }, "Start");
+
+    const buttonContainer = React.createElement(
+      "div",
+      null,
+      startButton,
+      React.createElement("button", null, "Stop")
+    );
+
+    const fruits = ["pomme", "banane", "poire", "fraise"];
+    const childrens = fruits.map((fruit) => {
+      return React.createElement("li", null, fruit);
+    });
+
+    const fruitItem = React.createElement("ul", null, childrens);
+    const exemple = React.createElement("div", null, null, "Hello");
+
+    const divElement = React.createElement(
+      "div",
+      null,
+      React.createElement("h1", null, "Je lance la partie !"),
+      buttonContainer,
+      fruitItem
+    );
+
+    const container = document.querySelector("#root");
+    const root = ReactDOM.createRoot(container);
+    root.render(exemple);
+  </script>
+</html>

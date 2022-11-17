@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {{> head}}
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+
+  <script>
+    // 🦁 crée une div
+    const title = document.createElement("div");
+    title.innerText = "Hello 👋";
+
+    const HelloOnClick = () => {
+      alert("Je clique sur la div Hello");
+    };
+
+    title.addEventListener("click", HelloOnClick);
+
+    const Counter = (initialValue) => {
+      const button = document.createElement("button");
+      button.innerText = Number(initialValue) || 0;
+      const buttonOnClick = () => {
+        const previousValue = Number(button.innerText);
+        button.innerText = previousValue + 1;
+      };
+      button.addEventListener("click", buttonOnClick);
+      return button;
+    };
+
+    const fruitsListUl = document.createElement("ul");
+    const fruits = ["banana", "apple", "strawberry"];
+    for (const fruit of fruits) {
+      const fruitLi = document.createElement("li");
+      fruitLi.innerText = fruit;
+      fruitsListUl.appendChild(fruitLi);
+    }
+
+    console.log(fruits.length);
+
+    const root = document.querySelector("#root");
+    root.appendChild(title);
+    root.appendChild(Counter());
+    root.appendChild(Counter("bullshit"));
+    root.appendChild(Counter(10));
+    root.appendChild(fruitsListUl);
+  </script>
+</html>
